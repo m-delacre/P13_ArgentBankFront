@@ -39,6 +39,7 @@ function reducer(state = initialState, action) {
 
   //action logout
   if (action.type === "logout") {
+    console.log('avant logout')
     return produce(state, (draft) => {
       draft.isLogged = false;
       draft.firstName = "";

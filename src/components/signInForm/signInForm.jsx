@@ -2,9 +2,11 @@ import React from "react";
 import { useState } from "react";
 import callAPI from "../../service/callAPI";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function SignInForm() {
   let dispatch = useDispatch();
+  let navigate = useNavigate();
 
   //states
   const [email, setEmail] = useState("");
@@ -41,6 +43,7 @@ function SignInForm() {
         type: "login",
         payload: { firstName: firstName, lastName: lastName, token: token },
       });
+      navigate("/profile");
     }
   }
 
