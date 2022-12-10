@@ -24,6 +24,17 @@ body {
   background-color: #12002b;
 }
 
+@media (max-width: 920px){
+  .bg-dark {
+    height: fit-content;
+    padding-bottom: 50px;
+  }
+
+  .main{
+    min-height: 90vh;
+  }
+}
+
 .sr-only {
   border: 0 !important;
   clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
@@ -76,6 +87,22 @@ body {
 .main-nav-logo-image {
   max-width: 100%;
   width: 200px;
+}
+
+@media (max-width: 920px){
+  .main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+  }
+
+  .main-nav-item {
+    text-decoration: none;
+    margin-right: 0.3rem;
+    font-size: 15px;
+  }
+
 }
 
 .hero {
@@ -342,6 +369,38 @@ body {
 
 .welcome-input input::placeholder {
   color: gray;
+}
+
+@media (max-width: 920px){
+  .welcome-input {
+    width: 500px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .welcome-input input {
+    margin-right: 15px;
+    margin-left: 15px;
+    width: 180px;
+    height: 30px;
+    padding-left: 10px;
+    font-size: 20px;
+  }
+
+  
+  .welcome-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .header{
+    margin-bottom: 0px;
+  }
 }
 
 .welcome-button {
