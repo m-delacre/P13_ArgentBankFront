@@ -9,7 +9,7 @@ import Profile from './pages/profile';
 import ErrorPage from './pages/error';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
-import './app.css';
+import './App.css';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 

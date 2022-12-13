@@ -26,14 +26,9 @@ function SignInForm() {
   //connexion
   async function connexion(email, password) {
     //if the information entered is correct we set the token in localStorage
-    callAPI.login(email, password);
-
-    //if response is false then we set error to true and use it later to show error message
-    if (!await callAPI.login(email, password)) {
-      setError(true);
-    }
-    //if response is good we get user info to set the globale state
-    if (callAPI.login(email, password)) {
+    //and we get user info to set the globale state
+    let connected = await callAPI.login(email, password);
+    if (connected) {
       let userInfo = await callAPI.getUserProfile(localStorage.getItem("token"));
       let firstName = userInfo.body.firstName;
       let lastName = userInfo.body.lastName;
@@ -45,12 +40,18 @@ function SignInForm() {
       });
       navigate("/profile");
     }
+    //if response is false then we set error to true and use it to show error message to the user
+    if (!connected) {
+      setError(true);
+    }
   }
 
   return (
     <React.Fragment>
       <form>
-        {error ? <p className="error-login-message">login declined, try again</p> : null}
+        {error ? (
+          <p className="error-login-message">login declined, try again</p>
+        ) : null}
         <div className="input-wrapper">
           <label htmlFor="username">Username</label>
           <input type="text" id="username" onChange={handleChangeEmail} />
@@ -67,7 +68,13 @@ function SignInForm() {
           <input type="checkbox" id="remember-me" />
           <label htmlFor="remember-me">Remember me</label>
         </div>
-        <button className="sign-in-button" onClick={(e) => { e.preventDefault(); connexion(email, password)} }>
+        <button
+          className="sign-in-button"
+          onClick={(e) => {
+            e.preventDefault();
+            connexion(email, password);
+          }}
+        >
           Sign In
         </button>
       </form>

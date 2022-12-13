@@ -12,7 +12,8 @@ function Header() {
 
   function logout() {
     dispatch({ type: "logout" });
-    localStorage.setItem("token", "");
+    //localStorage.setItem("token", "");
+    localStorage.removeItem("token");
   }
 
   if (isConnected === true) {
